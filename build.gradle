@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+bootJar {
+    baseName = 'internationalizationexample'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    //compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+
+    // needed for view with jsp
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.10'
+    compile group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: '4.4.2'
+
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile('mysql:mysql-connector-java:8.0.13')
+    compile("com.h2database:h2")
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
